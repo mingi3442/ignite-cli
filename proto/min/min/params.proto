@@ -1,0 +1,15 @@
+syntax = "proto3";
+package min.min;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+
+option go_package = "min/x/min/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (amino.name) = "min/x/min/Params";
+  option (gogoproto.equal) = true;
+
+  
+}

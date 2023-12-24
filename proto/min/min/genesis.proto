@@ -1,0 +1,17 @@
+syntax = "proto3";
+package min.min;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+import "min/min/params.proto";
+
+option go_package = "min/x/min/types";
+
+// GenesisState defines the min module's genesis state.
+message GenesisState {
+  // params defines all the parameters of the module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}
