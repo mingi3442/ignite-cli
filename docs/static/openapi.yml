@@ -18910,6 +18910,79 @@ paths:
               parameters.
       tags:
         - Msg
+  /min/min/params:
+    get:
+      summary: Parameters queries the parameters of the module.
+      operationId: MinMinQuery_Params
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              params:
+                description: params holds all the parameters of this module.
+                type: object
+            description: >-
+              QueryParamsResponse is response type for the Query/Params RPC
+              method.
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      tags:
+        - Query
+  /min/min/say_hello/{name}:
+    get:
+      summary: Queries a list of SayHello items.
+      operationId: MinMinQuery_SayHello
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: name
+          in: path
+          required: true
+          type: string
+      tags:
+        - Query
   /min.min.Msg/UpdateParams:
     post:
       summary: |-
@@ -18966,42 +19039,6 @@ paths:
             description: MsgUpdateParams is the Msg/UpdateParams request type.
       tags:
         - Msg
-  /min/min/params:
-    get:
-      summary: Parameters queries the parameters of the module.
-      operationId: MinMinQuery_Params
-      responses:
-        '200':
-          description: A successful response.
-          schema:
-            type: object
-            properties:
-              params:
-                description: params holds all the parameters of this module.
-                type: object
-            description: >-
-              QueryParamsResponse is response type for the Query/Params RPC
-              method.
-        default:
-          description: An unexpected error response.
-          schema:
-            type: object
-            properties:
-              code:
-                type: integer
-                format: int32
-              message:
-                type: string
-              details:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    '@type':
-                      type: string
-                  additionalProperties: {}
-      tags:
-        - Query
 definitions:
   cosmos.auth.v1beta1.MsgUpdateParams:
     type: object
@@ -26637,6 +26674,21 @@ definitions:
     description: |-
       Version defines the versioning scheme used to negotiate the IBC verison in
       the connection handshake.
+  min.min.Params:
+    type: object
+    description: Params defines the parameters for the module.
+  min.min.QueryParamsResponse:
+    type: object
+    properties:
+      params:
+        description: params holds all the parameters of this module.
+        type: object
+    description: QueryParamsResponse is response type for the Query/Params RPC method.
+  min.min.QuerySayHelloResponse:
+    type: object
+    properties:
+      name:
+        type: string
   min.min.MsgUpdateParams:
     type: object
     properties:
@@ -26657,13 +26709,3 @@ definitions:
     description: |-
       MsgUpdateParamsResponse defines the response structure for executing a
       MsgUpdateParams message.
-  min.min.Params:
-    type: object
-    description: Params defines the parameters for the module.
-  min.min.QueryParamsResponse:
-    type: object
-    properties:
-      params:
-        description: params holds all the parameters of this module.
-        type: object
-    description: QueryParamsResponse is response type for the Query/Params RPC method.
